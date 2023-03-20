@@ -1,5 +1,5 @@
 <?php
-date_default_timezone_set("America/New_York");
+date_default_timezone_set("Europe/Bratislava");
 //Europe/Bratislava , America/New_York , Europe/Moscow ,Asia/Tokyo
 if (file_exists("studenti.json"))
       {

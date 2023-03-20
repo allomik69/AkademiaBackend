@@ -1,5 +1,6 @@
 <?php
-date_default_timezone_set("Europe/Bratislava");
+date_default_timezone_set("America/New_York");
+//Europe/Bratislava , America/New_York , Europe/Moscow ,Asia/Tokyo
 if (file_exists("studenti.json"))
       {
         $encodedStudents= file_get_contents("studenti.json");
@@ -22,11 +23,8 @@ if (file_exists("studenti.json"))
         $cas =date("H.i.s");
         $prichodyJson = file_get_contents("prichody.json");
         $decodedPrichodyJson = json_decode($prichodyJson);
-          if ( 8 < date("H")) {  
-            $decodedPrichodyJson[] = $cas ." meskanie "; 
-          } else {
-            $decodedPrichodyJson[] = $cas;
-          }
+        $decodedPrichodyJson[] = $cas;
+
         $encodedPrichodyJson = json_encode($decodedPrichodyJson,JSON_PRETTY_PRINT);
         file_put_contents("prichody.json", $encodedPrichodyJson);
     }
@@ -54,4 +52,3 @@ if (file_exists("studenti.json"))
     }
     
 verification(date("H"),"cas.txt",date("H.i.s"));
-

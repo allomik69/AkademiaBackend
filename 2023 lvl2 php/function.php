@@ -1,7 +1,13 @@
 <?php
 date_default_timezone_set("Europe/Bratislava");
 //Europe/Bratislava , America/New_York , Europe/Moscow ,Asia/Tokyo
-if (file_exists("studenti.json"))
+
+
+class students {
+
+public static function studentsJson () 
+{
+    if (file_exists("studenti.json"))
       {
         $encodedStudents= file_get_contents("studenti.json");
         $students=  !empty($encodedStudents) ? json_decode( $encodedStudents, true) : array();
@@ -17,9 +23,13 @@ if (file_exists("studenti.json"))
     $json = json_encode($students, JSON_FORCE_OBJECT | JSON_PRETTY_PRINT);
     file_put_contents('studenti.json', $json);
     } 
-    
-    
-    function prichodyJson () {
+}
+}
+students::studentsJson();
+
+
+class arrivals {
+        public function arrivalsJson () {
         $cas =date("H.i.s");
         $prichodyJson = file_get_contents("prichody.json");
         $decodedPrichodyJson = json_decode($prichodyJson);
@@ -27,10 +37,11 @@ if (file_exists("studenti.json"))
 
         $encodedPrichodyJson = json_encode($decodedPrichodyJson,JSON_PRETTY_PRINT);
         file_put_contents("prichody.json", $encodedPrichodyJson);
+    } 
     }
-    prichodyJson ();
-
-    function verification($H,$cas_text,$cas) 
+    $obj = new arrivals();
+    $obj ->arrivalsJson();
+  /*  function verification($H,$cas_text,$cas) 
     {   
         if (8<$H &&  $H<20)  
         {
@@ -51,4 +62,7 @@ if (file_exists("studenti.json"))
         die();
     }
     
-verification(date("H"),"cas.txt",date("H.i.s"));
+    verification(date("H"),"cas.txt",date("H.i.s"));
+    */
+        header("Location: index.php");
+        die();

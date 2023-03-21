@@ -1,4 +1,3 @@
-
 <form action="function.php" method="GET" >
        <p> meno:<input type="text" name="meno" value=""> </p>
         <input type="submit" name="submit" value="Poslat">
@@ -7,34 +6,34 @@
  
 echo "ahoj <br>";
 //Europe/Bratislava , America/New_York , Europe/Moscow ,Asia/Tokyo
-date_default_timezone_set("America/New_York");
+date_default_timezone_set("Europe/Bratislava");
 echo "čas: ". date("H.i.s"). "<br>";
 echo " " ."<br>";
 
-function pre_rStudenti() {
-    $Students = file_get_contents("studenti.json");
-    $DecodedStudents =json_decode($Students);
+function printStudents() {
+    $students = file_get_contents("studenti.json");
+    $decodedStudents =json_decode($students);
     echo"<pre>";
-    print_r($DecodedStudents);
+    print_r($decodedStudents);
     echo"<pre>";
 }
-pre_rStudenti();
+printStudents();
 
 echo"<br><br>";
 
-function pre_rPrichody() {
-    $Prichody = file_get_contents("prichody.json");
-    $decodedPrichody =json_decode($Prichody);
+function displayArrivals() {
+    $arrivals = file_get_contents("prichody.json");
+    $decodedArrivals =json_decode($arrivals);
     echo"<pre>";
-    foreach ($decodedPrichody as $d) {
-        $H = strtok($d,".");
-        if ($H>8) {
-            $d =$d. " meskanie";
+    foreach ($decodedArrivals as $decodedArrival) {
+        $hoursDecodedArrival = strtok($decodedArrival,".");
+        if ($hoursDecodedArrival>8) {
+            $decodedArrival =$decodedArrival. " meskanie";
         }
-        echo $d."<br>";
+        echo $decodedArrival."<br>";
         
     }
 
     echo"<pre>";
 }
-pre_rPrichody();
+displayArrivals();

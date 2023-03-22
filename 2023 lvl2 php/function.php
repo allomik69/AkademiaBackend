@@ -1,68 +1,43 @@
 <?php
-date_default_timezone_set("Europe/Bratislava");
+date_default_timezone_set("Asia/Tokyo");
 //Europe/Bratislava , America/New_York , Europe/Moscow ,Asia/Tokyo
-
-
-class students {
-
-public static function studentsJson () 
-{
-    if (file_exists("studenti.json"))
-      {
-        $encodedStudents= file_get_contents("studenti.json");
-        $students=  !empty($encodedStudents) ? json_decode( $encodedStudents, true) : array();
-        $name = $_GET["meno"]; 
-        if (array_key_exists($name, $students)) 
+class Students {
+    public static function studentsJson () 
+    {
+        if (file_exists("studenti.json"))
         {
-        $students[$name]++;
+            $encodedStudents= file_get_contents("studenti.json");
+            $students=  !empty($encodedStudents) ? json_decode( $encodedStudents, true) : array();
+            $name = $_GET["meno"]; 
+            if (array_key_exists($name, $students)) 
+            {
+                $students[$name]++;
+            } 
+            else 
+            {
+                $students[$name] = 1;
+            }   
+            $json = json_encode($students, JSON_FORCE_OBJECT | JSON_PRETTY_PRINT);
+            file_put_contents('studenti.json', $json);
         } 
-        else 
-        {
-        $students[$name] = 1;
-        }   
-    $json = json_encode($students, JSON_FORCE_OBJECT | JSON_PRETTY_PRINT);
-    file_put_contents('studenti.json', $json);
-    } 
-}
-}
-students::studentsJson();
-
-
-class arrivals {
-        public function arrivalsJson () {
-        $cas =date("H.i.s");
-        $prichodyJson = file_get_contents("prichody.json");
-        $decodedPrichodyJson = json_decode($prichodyJson);
-        $decodedPrichodyJson[] = $cas;
-
-        $encodedPrichodyJson = json_encode($decodedPrichodyJson,JSON_PRETTY_PRINT);
-        file_put_contents("prichody.json", $encodedPrichodyJson);
-    } 
     }
-    $obj = new arrivals();
-    $obj ->arrivalsJson();
-  /*  function verification($H,$cas_text,$cas) 
+}
+Students::studentsJson();
+function verification($H,$cas_text,$cas) 
     {   
-        if (8<$H &&  $H<20)  
-        {
-
-            file_put_contents($cas_text,$cas. " meskanie" ." ".$_GET["meno"]."<br>", FILE_APPEND);
-        } 
-        
-        else if (20 <=  $H && 23 >=  $H) 
-        {
-            die("chyba");
-        } 
-        else 
-        {
-
-            file_put_contents($cas_text, $cas. " ". $_GET["meno"] ."<br>", FILE_APPEND);
-        }
-        header("Location: index.php");
-        die();
+    if (8<$H &&  $H<20)  
+    {
+        file_put_contents($cas_text,$cas. " meskanie" ." ".$_GET["meno"]."<br>", FILE_APPEND);
+    }  
+    else if (20 <=  $H && 23 >=  $H) 
+    {
+        die("chyba");
+    } 
+    else 
+    {
+        file_put_contents($cas_text, $cas. " ". $_GET["meno"] ."<br>", FILE_APPEND);
     }
-    
-    verification(date("H"),"cas.txt",date("H.i.s"));
-    */
-        header("Location: index.php");
-        die();
+    header("Location: index.php");
+    die();
+    }
+verification(date("H"),"cas.txt",date("H.i.s"));

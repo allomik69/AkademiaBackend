@@ -1,8 +1,10 @@
 <?php
-date_default_timezone_set("Asia/Tokyo");
+date_default_timezone_set("Europe/Bratislava");
 //Europe/Bratislava , America/New_York , Europe/Moscow ,Asia/Tokyo
+Students::saveStudentsName();
+verifcationIfStudentIsLate(date("H"),"cas.txt",date("H.i.s"));
 class Students {
-    public static function studentsJson () 
+    public static function saveStudentsName() 
     {
         if (file_exists("studenti.json"))
         {
@@ -22,9 +24,8 @@ class Students {
         } 
     }
 }
-Students::studentsJson();
-function verification($H,$cas_text,$cas) 
-    {   
+function verifcationIfStudentIsLate($H,$cas_text,$cas) 
+{   
     if (8<$H &&  $H<20)  
     {
         file_put_contents($cas_text,$cas. " meskanie" ." ".$_GET["meno"]."<br>", FILE_APPEND);
@@ -37,7 +38,4 @@ function verification($H,$cas_text,$cas)
     {
         file_put_contents($cas_text, $cas. " ". $_GET["meno"] ."<br>", FILE_APPEND);
     }
-    header("Location: index.php");
-    die();
-    }
-verification(date("H"),"cas.txt",date("H.i.s"));
+} 

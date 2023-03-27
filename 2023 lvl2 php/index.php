@@ -1,20 +1,24 @@
-<form action="function.php" method="GET" >
+
+<form action="" id="" method="GET" >
        <p> meno:<input type="text" name="meno" value=""> </p>
         <input type="submit" name="submit" value="Poslat">
     </form>
 <?php
- 
+include 'function.php';
 echo "ahoj <br>";
 //Europe/Bratislava , America/New_York , Europe/Moscow ,Asia/Tokyo
-date_default_timezone_set("Asia/Tokyo");
+date_default_timezone_set("Europe/Bratislava");
 echo "čas: ". date("H.i.s"). "<br>";
 echo " " ."<br>";
+getLogs("cas.txt");
+printStudents();
+$obj = new Arrivals();
+$obj->arrivalsJsonSavingData();
 function getLogs($cas_text) 
 {
     $current = file_get_contents($cas_text);
     echo $current;
 }
-getLogs("cas.txt");
 function printStudents() {
     $students = file_get_contents("studenti.json");
     $decodedStudents =json_decode($students);
@@ -22,9 +26,8 @@ function printStudents() {
     print_r($decodedStudents);
     echo"<pre>";
 }
-printStudents();
 class Arrivals {
-    private function Verification()
+    private function verificationIfStudentIsLateJson()
     {
         $arrivals = file_get_contents("prichody.json");
         $decodedArrivals =json_decode($arrivals);
@@ -38,7 +41,7 @@ class Arrivals {
             echo $decodedArrival."<br>";
         }
     }
-    public function arrivalsJson () 
+    public function arrivalsJsonSavingData () 
     {
         $cas =date("H.i.s");
         $prichodyJson = file_get_contents("prichody.json");
@@ -46,10 +49,6 @@ class Arrivals {
         $decodedPrichodyJson[] = $cas;
         $encodedPrichodyJson = json_encode($decodedPrichodyJson,JSON_PRETTY_PRINT);
         file_put_contents("prichody.json", $encodedPrichodyJson);
-        echo"<pre>";
-        $this->Verification();
-        echo"<pre>";
+        $this->verificationIfStudentIsLateJson();
     } 
 }
-$obj = new Arrivals();
-$obj->arrivalsJson();

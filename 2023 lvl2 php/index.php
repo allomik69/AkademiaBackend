@@ -27,7 +27,8 @@ function printStudents()
     print_r($decodedStudents);
     echo"<pre>";
 }
-class Arrivals {
+class Arrivals 
+{
     private function verificationIfStudentIsLateJson()
     {
         $arrivals = file_get_contents("prichody.json");

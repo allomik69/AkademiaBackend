@@ -3,7 +3,8 @@ date_default_timezone_set("Europe/Bratislava");
 //Europe/Bratislava , America/New_York , Europe/Moscow ,Asia/Tokyo
 Students::saveStudentsName();
 verifcationIfStudentIsLate(date("H"),"cas.txt",date("H.i.s"));
-class Students {
+class Students 
+{
     public static function saveStudentsName() 
     {
         if (file_exists("studenti.json"))

@@ -19,7 +19,8 @@ function getLogs($cas_text)
     $current = file_get_contents($cas_text);
     echo $current;
 }
-function printStudents() {
+function printStudents() 
+{
     $students = file_get_contents("studenti.json");
     $decodedStudents =json_decode($students);
     echo"<pre>";

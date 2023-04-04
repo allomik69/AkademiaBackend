@@ -81,12 +81,11 @@ class Plugin extends PluginBase
      */
     public function registerNavigation()
     {
-        return []; // Remove this line to activate
 
         return [
             'arrival' => [
                 'label'       => 'Arrival',
-                'url'         => Backend::url('app/arrival/mycontroller'),
+                'url'         => Backend::url('app/arrival/arrivals'),
                 'icon'        => 'icon-leaf',
                 'permissions' => ['app.arrival.*'],
                 'order'       => 500,

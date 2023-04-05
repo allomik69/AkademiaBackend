@@ -6,5 +6,8 @@ columns:
     id:
         label: ID
         searchable: true
-    meno:
+    names:
         label: name
+    arrival:
+        type: datetime
+        

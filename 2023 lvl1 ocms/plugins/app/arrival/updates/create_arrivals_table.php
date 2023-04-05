@@ -11,7 +11,7 @@ class CreateArrivalsTable extends Migration
         Schema::create('app_arrival_arrivals', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->string('names');
+            $table->string('name');
             $table->timestamp('arrival');
             $table->timestamps();
         });

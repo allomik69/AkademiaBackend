@@ -6,7 +6,7 @@ fields:
     id:
         label: ID
         disabled: true
-    names:
+    name:
         label: name
     arrival:
         type: datepicker

@@ -6,7 +6,7 @@ columns:
     id:
         label: ID
         searchable: true
-    names:
+    name:
         label: name
     arrival:
         type: datetime

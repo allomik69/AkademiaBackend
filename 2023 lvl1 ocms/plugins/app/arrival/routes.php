@@ -4,7 +4,7 @@
 Route::prefix('api/v1')->group(function () {
     Route::get('arrivals', function () 
     {
-        return Arrival::get();
+        return Arrival::all();
     });
 
     Route::post('arrivals', function () 

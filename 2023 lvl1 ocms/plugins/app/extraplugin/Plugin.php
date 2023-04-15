@@ -40,7 +40,12 @@ class Plugin extends PluginBase
      */
     public function boot()
     {
-
+        \App\Arrival\Models\Arrival::extend(function ($arrival)
+        {
+            $arrival->bindEvent('model.afterCreate', function () use ( $arrival) {
+                \Log::info("{$arrival->name} was created at {$arrival->arrival}!");
+            });
+        }); 
     }
 
     /**

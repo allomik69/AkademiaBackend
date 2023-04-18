@@ -37,6 +37,10 @@ class User extends UserBase
         'groups' => [UserGroup::class, 'table' => 'users_groups']
     ];
 
+    public $hasMany = [
+        'arrival' => ['App\Arrival\Models\Arrival']
+    ];
+
     public $attachOne = [
         'avatar' => \System\Models\File::class
     ];

@@ -14,6 +14,10 @@ class Arrival extends Model
      */
     public $table = 'app_arrival_arrivals';
 
+    public $belongsTo = [
+        'user' => ['RainLab\User\Models\User']
+    ];
+
     /**
      * @var array Guarded fields
      */
@@ -64,7 +68,6 @@ class Arrival extends Model
     public $hasMany = [];
     public $hasOneThrough = [];
     public $hasManyThrough = [];
-    public $belongsTo = [];
     public $belongsToMany = [];
     public $morphTo = [];
     public $morphOne = [];

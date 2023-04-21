@@ -2,17 +2,7 @@
  use App\Arrival\Models\Arrival;
 
 Route::prefix('api/v1')->group(function () {
-    Route::get('arrivals', function () 
-    {
-        return Arrival::all();
-    });
+    Route::get('arrivals' , [\App\Arrival\Http\Controllers\ArrController::class , 'getArrivals']);
 
-    Route::post('arrivals', function () 
-    {            
-            $arrival = new Arrival();
-            $arrival->name = post("meno");
-            $arrival->arrival = now();
-            $arrival->save();
-            return response()->json($arrival);
-    });
+    Route::post('arrivals', [\App\Arrival\Http\Controllers\ArrController::class , 'addArrivals']);
 });

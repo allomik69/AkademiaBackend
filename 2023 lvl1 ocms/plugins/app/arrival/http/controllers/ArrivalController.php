@@ -4,13 +4,13 @@ namespace App\Arrival\Http\Controllers;
  
 use App\Arrival\Models\Arrival;
 use Backend\Classes\Controller;
-class ArrController extends Controller
+class ArrivalController extends Controller
 {
-    public function getArrivals()
+    public function index()
     {
         return Arrival::all();
     }
-    public function addArrivals()
+    public function store()
     {
         $arrival = new Arrival();
         $arrival->name = post("name");

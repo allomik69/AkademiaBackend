@@ -1,7 +1,8 @@
 <?php
  
 namespace App\Arrival\Http\Controllers;
- 
+
+use LibUser\Userapi\Models\User;
 use App\Arrival\Models\Arrival;
 use Backend\Classes\Controller;
 class ArrivalController extends Controller
@@ -18,5 +19,16 @@ class ArrivalController extends Controller
         $arrival->arrival = now();
         $arrival->save();
         return response()->json($arrival);
+    }
+    public function loggedUser()
+    {
+        if (auth()->check())
+        {
+
+        } 
+        else 
+        {
+            return "error";
+        }
     }
 }

@@ -5,11 +5,12 @@ namespace App\Arrival\Http\Controllers;
 use LibUser\Userapi\Models\User;
 use App\Arrival\Models\Arrival;
 use Backend\Classes\Controller;
+use App\Arrival\Http\Resources\ArrivalResource;
 class ArrivalController extends Controller
 {
     public function index()
     {
-        return Arrival::all();
+        return ArrivalResource::collection(Arrival::all());
     }
     public function store()
     {
@@ -18,7 +19,7 @@ class ArrivalController extends Controller
         $arrival->user_id = post("user_id");
         $arrival->arrival = now();
         $arrival->save();
-        return response()->json($arrival);
+        return new ArrivalResource($arrival);
     }
     public function loggedUser()
     {

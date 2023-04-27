@@ -2,6 +2,7 @@
 namespace App\Arrival\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
+use LibUser\UserApi\Http\Resources\UserResource;
  
 class ArrivalResource extends JsonResource
 {
@@ -11,7 +12,7 @@ class ArrivalResource extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
-            'user_id' => $this->user_id,
+            'user' => $this->user,
             'arrival' => $this->arrival,
         ];
     }

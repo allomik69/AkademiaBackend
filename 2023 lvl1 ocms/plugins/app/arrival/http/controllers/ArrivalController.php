@@ -23,10 +23,10 @@ class ArrivalController extends Controller
     }
     public function loggedUser()
     {
-        if (auth()->check())
+        if (auth()->user()) 
         {
-
-        } 
+            
+        }
         else 
         {
             return "error";

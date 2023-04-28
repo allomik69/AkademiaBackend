@@ -12,7 +12,7 @@ class ArrivalResource extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
-            'user' => $this->user,
+            'user' => new UserResource($this->user),
             'arrival' => $this->arrival,
         ];
     }

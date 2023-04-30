@@ -6,6 +6,8 @@ use LibUser\Userapi\Models\User;
 use App\Arrival\Models\Arrival;
 use Backend\Classes\Controller;
 use App\Arrival\Http\Resources\ArrivalResource;
+use RainLab\User\Facades\Auth;
+
 class ArrivalController extends Controller
 {
     public function index()
@@ -23,13 +25,14 @@ class ArrivalController extends Controller
     }
     public function loggedUser()
     {
-        if (auth()->user()) 
+        if (auth()->user())
         {
-            
-        }
-        else 
-        {
-            return "error";
-        }
+        $arrival = new Arrival;
+        $arrival->name = auth()->user()->name;
+        $arrival->user_id = auth()->user()->id;
+        $arrival->arrival = now();
+        $arrival->save();
+        return new ArrivalResource($arrival);
+        }      
+    } 
     }
-}

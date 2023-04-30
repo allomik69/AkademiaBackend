@@ -3,6 +3,7 @@ namespace App\Arrival\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 use LibUser\UserApi\Http\Resources\UserResource;
+use LibUser\Userapi\Models\User;
  
 class ArrivalResource extends JsonResource
 {

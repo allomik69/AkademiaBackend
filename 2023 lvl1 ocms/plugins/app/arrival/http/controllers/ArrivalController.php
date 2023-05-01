@@ -25,6 +25,7 @@ class ArrivalController extends Controller
     }
     public function loggedUser()
     {
+        dd(auth()->user());
         if (auth()->user())
         {
         $arrival = new Arrival;

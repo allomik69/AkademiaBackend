@@ -9,6 +9,5 @@
 
     Route::post('arrivals', [\App\Arrival\Http\Controllers\ArrivalController::class , 'store']);
 
-    Route::post('LoggedUser', [\App\Arrival\Http\Controllers\ArrivalController::class , 'loggedUser']);
     });
 });

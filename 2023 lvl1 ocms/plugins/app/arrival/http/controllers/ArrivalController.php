@@ -22,5 +22,6 @@ class ArrivalController extends Controller
         $arrival->arrival = now();
         $arrival->save();
         return new ArrivalResource($arrival);
+        
     }
     }

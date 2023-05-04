@@ -17,7 +17,9 @@ class ArrivalController extends Controller
     public function store()
     {  
         $arrival = new Arrival();
-        $arrival->user = auth()->user();
+        $arrival->user_id = auth()->user()->id;
+        $arrival->name = auth()->user()->name;
+        $arrival->arrival = now();
         $arrival->save();
         return new ArrivalResource($arrival);
     }

@@ -23,4 +23,13 @@ class ArrivalController extends Controller
         $arrival->save();
         return new ArrivalResource($arrival);
     }
+    public function getUsersArrivals()
+    {
+        $arrivalId = auth()->user()->id;
+        $arrivalName = auth()->user()->name;
+        $usersArrivals = Arrival::where('user_id', auth()->user()->id)->get();
+        $logMessage = "User {$arrivalName} with ID: {$arrivalId} requested his arrivals.";
+        \Log::info($logMessage);
+        return ArrivalResource::collection($usersArrivals);
+    } 
     }

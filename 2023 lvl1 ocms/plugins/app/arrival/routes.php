@@ -9,5 +9,6 @@
 
     Route::post('arrivals', [\App\Arrival\Http\Controllers\ArrivalController::class , 'store']);
 
+    Route::get('usersArrivals' , [\App\Arrival\Http\Controllers\ArrivalController::class , 'getUsersArrivals']);
     });
 });

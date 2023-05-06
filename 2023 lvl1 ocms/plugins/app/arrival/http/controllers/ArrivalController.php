@@ -2,11 +2,10 @@
  
 namespace App\Arrival\Http\Controllers;
 
-use LibUser\Userapi\Models\User;
 use App\Arrival\Models\Arrival;
 use Backend\Classes\Controller;
 use App\Arrival\Http\Resources\ArrivalResource;
-use RainLab\User\Facades\Auth;
+use Event;
 
 class ArrivalController extends Controller
 {
@@ -25,11 +24,8 @@ class ArrivalController extends Controller
     }
     public function getUsersArrivals()
     {
-        $arrivalId = auth()->user()->id;
-        $arrivalName = auth()->user()->name;
         $usersArrivals = Arrival::where('user_id', auth()->user()->id)->get();
-        $logMessage = "User {$arrivalName} with ID: {$arrivalId} requested his arrivals.";
-        \Log::info($logMessage);
+        Event::fire('App.Arrival.userArrivalsRequested',[$usersArrivals]);
         return ArrivalResource::collection($usersArrivals);
     } 
     }

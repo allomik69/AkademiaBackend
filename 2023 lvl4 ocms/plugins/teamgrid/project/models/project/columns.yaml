@@ -9,7 +9,6 @@ columns:
     name: 
         label: NAME
         type: text
-        placeholder: si kokot 
     projectID: 
         label: INDIVIDUAL PROJECT ID
         type: text

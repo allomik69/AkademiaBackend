@@ -1,0 +1,22 @@
+# ===================================
+#  List Column Definitions
+# ===================================
+
+columns:
+    id:
+        label: ID
+        searchable: true
+    name: 
+        label: NAME
+        type: text
+        placeholder: si kokot 
+    projectID: 
+        label: INDIVIDUAL PROJECT ID
+        type: text
+    customer: 
+        label: CUSTOMER
+        type: text
+    list:
+        label: List
+    projectmanager:
+        label: Project Manager

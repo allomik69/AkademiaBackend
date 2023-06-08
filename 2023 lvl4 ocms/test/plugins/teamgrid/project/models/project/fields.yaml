@@ -1,0 +1,27 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+fields:
+    id:
+        label: ID
+        disabled: true
+    name:
+        label: Name
+    projectID:
+        label: PROJECT ID
+    customer: 
+        label: Customer
+    list:
+        label: List
+        type: dropdown
+        options:
+            Abgeschlossen: Abgeschlossen
+            In Bearbeitung: In Bearbeitung
+    projectmanager:
+        label: PROJECT MANAGER
+        type: dropdown
+        options:
+            Allomik: Allomik
+            Cameron Tucker: Cameron Tucker
+            Tobias Hlieb: Tobias Hlieb

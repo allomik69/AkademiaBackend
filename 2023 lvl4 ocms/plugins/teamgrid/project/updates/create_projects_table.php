@@ -11,11 +11,21 @@ class CreateProjectsTable extends Migration
         Schema::create('teamgrid_project_projects', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->string('name')->nullable();
-            $table->string('projectID');
-            $table->string('customer')->nullable();
-            $table->string('list')->nullable();
-            $table->string('projectmanager')->nullable();
+
+            $table->string('name');
+            $table->text('description')->nullable();
+            $table->integer('customerID')->nullable();
+            $table->integer('projectManagerID')->nullable();
+
+            $table->date('dueDate')->nullable();
+
+            $table->enum('accounting', ['disabled', 'serviceHourlyRate','personHourlyRate','hourlyRate' ]);
+            $table->integer('hourlyRatePrice')->nullable();
+
+            $table->enum('budget', ['disabled', 'totalHours','totalFees','hoursPerMonth','feesPerMonth' ]);
+
+            $table->boolean('done')->default(false);
+                    
             $table->timestamps();
         });
     }

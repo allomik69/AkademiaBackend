@@ -7,15 +7,15 @@ columns:
         label: ID
         searchable: true
     name: 
-        label: NAME
-        type: text
-    projectID: 
-        label: INDIVIDUAL PROJECT ID
-        type: text
-    customer: 
-        label: CUSTOMER
-        type: text
-    list:
-        label: List
-    projectmanager:
-        label: Project Manager
+        label: Name
+        searchable: true
+    description:
+        label: Descrption
+    customerID: 
+        label: Customer ID
+        searchable: true
+    projectManagerID:
+        label: Project Manager ID
+        searchable: true
+    done:
+        label: Done  

@@ -8,20 +8,44 @@ fields:
         disabled: true
     name:
         label: Name
-    projectID:
-        label: PROJECT ID
-    customer: 
-        label: Customer
-    list:
-        label: List
+        type: text
+    description:
+        label: Descrption
+        type: textarea
+        size: large
+    customerID: 
+        label: Customer ID
+        type: number
+    projectManagerID:
+        label: Project Manager ID
+        type: number
+    dueDate:
+        label: Due Date
+        type: datepicker
+    accounting: 
+        label: Accounting
         type: dropdown
+        default: disabled
         options:
-            Abgeschlossen: Abgeschlossen
-            In Bearbeitung: In Bearbeitung
-    projectmanager:
-        label: PROJECT MANAGER
+            disabled: Disabled
+            serviceHourlyRate: Service Hourly Rate
+            personHourlyRate:  Person Hourly Rate
+            hourlyRate: Hourly
+    hourlyRatePrice:
+        label: Hourly Rate
+        type: number
+    budget: 
+        label: Budget
         type: dropdown
+        default: disabled
         options:
-            Allomik: Allomik
-            Cameron Tucker: Cameron Tucker
-            Tobias Hlieb: Tobias Hlieb
+            disabled: Disabled
+            totalHours: Total Hours
+            totalFees: Total Fees
+            hoursPerMonth: Hours Per Month
+            feesPerMonth: Fees Per Month
+    done: 
+        label: Done
+        type: switch
+
+    

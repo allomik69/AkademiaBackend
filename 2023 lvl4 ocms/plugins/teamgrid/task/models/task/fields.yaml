@@ -1,0 +1,36 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+fields:
+    id:
+        label: ID
+        disabled: true
+    name: 
+        label: Name
+        type: text
+    plannedStart:
+        label: Planned start
+        type: datepicker
+        mode: date
+    plannedEnd:
+        label: Planned end
+        type: datepicker
+        mode: date
+    dueDate:
+        label: Due date
+        type: datepicker
+    plannedTime:
+        label: Planned time
+        type: datepicker
+        mode: time
+    tags:
+        label: Tags
+        type: text
+    description:
+        label: Descrption
+        type: textarea
+        size: large
+
+
+

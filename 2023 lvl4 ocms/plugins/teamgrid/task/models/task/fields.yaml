@@ -9,6 +9,12 @@ fields:
     name: 
         label: Name
         type: text
+    userID: 
+        label: User ID
+        type: number
+    projectID:
+        label: Project ID
+        type: number
     plannedStart:
         label: Planned start
         type: datepicker
@@ -31,6 +37,10 @@ fields:
         label: Descrption
         type: textarea
         size: large
+    done:
+        label: Done
+        type: switch
+
 
 
 

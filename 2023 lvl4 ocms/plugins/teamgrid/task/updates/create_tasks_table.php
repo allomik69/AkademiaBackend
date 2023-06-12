@@ -14,6 +14,9 @@ class CreateTasksTable extends Migration
 
             $table->string('name');
 
+            $table->integer('userID');
+            $table->integer('projectID');
+
             $table->date('plannedStart')->nullable();
             $table->date('plannedEnd')->nullable();
             $table->date('dueDate')->nullable();
@@ -22,6 +25,8 @@ class CreateTasksTable extends Migration
             
             $table->text('tags')->nullable();
             $table->text('description')->nullable();
+
+            $table->boolean('done')->default(false);
 
             $table->timestamps();
         });

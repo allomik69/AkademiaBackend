@@ -8,6 +8,11 @@ use Model;
 class Project extends Model
 {
     use \October\Rain\Database\Traits\Validation;
+    
+    public $hasMany = [
+        'task' => 'Teamgrid\Task\Models\Task',
+    ];
+    
 
     /**
      * @var string The database table used by the model.
@@ -61,7 +66,6 @@ class Project extends Model
      * @var array Relations
      */
     public $hasOne = [];
-    public $hasMany = [];
     public $hasOneThrough = [];
     public $hasManyThrough = [];
     public $belongsTo = [];

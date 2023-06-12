@@ -9,6 +9,9 @@ class Task extends Model
 {
     use \October\Rain\Database\Traits\Validation;
 
+    public $belongsTo = [
+        'project' => 'Teamgrid\Project\Models\Project',
+    ];
     /**
      * @var string The database table used by the model.
      */
@@ -64,7 +67,6 @@ class Task extends Model
     public $hasMany = [];
     public $hasOneThrough = [];
     public $hasManyThrough = [];
-    public $belongsTo = [];
     public $belongsToMany = [];
     public $morphTo = [];
     public $morphOne = [];

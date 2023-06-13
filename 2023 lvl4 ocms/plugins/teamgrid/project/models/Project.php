@@ -10,7 +10,7 @@ class Project extends Model
     use \October\Rain\Database\Traits\Validation;
     
     public $hasMany = [
-        'task' => 'Teamgrid\Task\Models\Task',
+        'tasks' => 'Teamgrid\Task\Models\Task',
     ];
     
 

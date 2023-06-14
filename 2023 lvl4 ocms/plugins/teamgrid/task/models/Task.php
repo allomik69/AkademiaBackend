@@ -10,7 +10,11 @@ class Task extends Model
     use \October\Rain\Database\Traits\Validation;
 
     public $belongsTo = [
-        'project' => 'Teamgrid\Project\Models\Project',
+        'project' => ['Teamgrid\Project\Models\Project'],
+        'user' => ['Rainlab\User\Models\User'],
+    ];
+    public $hasMany = [
+        'timeEntries' => ['Teamgrid\TimeEntry\Mondels\TimEntry'],
     ];
     /**
      * @var string The database table used by the model.
@@ -64,7 +68,6 @@ class Task extends Model
      * @var array Relations
      */
     public $hasOne = [];
-    public $hasMany = [];
     public $hasOneThrough = [];
     public $hasManyThrough = [];
     public $belongsToMany = [];

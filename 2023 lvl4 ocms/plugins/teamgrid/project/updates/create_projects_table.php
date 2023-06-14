@@ -19,12 +19,12 @@ class CreateProjectsTable extends Migration
 
             $table->date('dueDate')->nullable();
 
-            $table->enum('accounting', ['disabled', 'serviceHourlyRate','personHourlyRate','hourlyRate' ]);
+            $table->enum('accounting', ['disabled', 'serviceHourlyRate','personHourlyRate','hourlyRate' ])->nullable();
             $table->integer('hourlyRatePrice')->nullable();
 
-            $table->enum('budget', ['disabled', 'totalHours','totalFees','hoursPerMonth','feesPerMonth' ]);
+            $table->enum('budget', ['disabled', 'totalHours','totalFees','hoursPerMonth','feesPerMonth' ])->nullable();
 
-            $table->boolean('done')->default(false);
+            $table->boolean('done')->nullable()->default(false);
                     
             $table->timestamps();
         });

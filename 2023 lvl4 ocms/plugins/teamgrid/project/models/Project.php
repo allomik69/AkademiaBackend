@@ -8,9 +8,12 @@ use Model;
 class Project extends Model
 {
     use \October\Rain\Database\Traits\Validation;
+    public $belongsTo = [
+        'user' => ['Rainlab\User\Models\User'],
+    ];
     
     public $hasMany = [
-        'tasks' => 'Teamgrid\Task\Models\Task',
+        'tasks' => ['Teamgrid\Task\Models\Task'],
     ];
     
 
@@ -68,7 +71,6 @@ class Project extends Model
     public $hasOne = [];
     public $hasOneThrough = [];
     public $hasManyThrough = [];
-    public $belongsTo = [];
     public $belongsToMany = [];
     public $morphTo = [];
     public $morphOne = [];

@@ -6,3 +6,22 @@ fields:
     id:
         label: ID
         disabled: true
+    userID:
+        label: User ID 
+        type: number
+    taskID:
+        label: Task ID 
+        type: number
+    startTime:
+        label: Start Time
+        type: datepicker
+    endTime:
+        label: End Time
+        type: datepicker
+    done:
+     label: Done 
+     type: switch
+    totalTime:
+        label: Total Time
+        type: number
+

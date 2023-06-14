@@ -9,6 +9,11 @@ class TimeEntry extends Model
 {
     use \October\Rain\Database\Traits\Validation;
 
+    public $belongsTo = [
+        "task" => ['Teamgrid\Task\Models\Task'],
+        "user" => ['Rainlab\User\Models\User'],
+    ];
+
     /**
      * @var string The database table used by the model.
      */
@@ -64,7 +69,6 @@ class TimeEntry extends Model
     public $hasMany = [];
     public $hasOneThrough = [];
     public $hasManyThrough = [];
-    public $belongsTo = [];
     public $belongsToMany = [];
     public $morphTo = [];
     public $morphOne = [];

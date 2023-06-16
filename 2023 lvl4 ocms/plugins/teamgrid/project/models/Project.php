@@ -9,11 +9,13 @@ class Project extends Model
 {
     use \October\Rain\Database\Traits\Validation;
     public $belongsTo = [
-        'user' => ['Rainlab\User\Models\User'],
+        'projectManager' => ['Rainlab\User\Models\User'],
+        'customer' => ['Rainlab\User\Models\User'],
     ];
     
     public $hasMany = [
         'tasks' => ['Teamgrid\Task\Models\Task'],
+        'accountingPeople' => ['Rainlab\User\Models\User'],
     ];
     
 

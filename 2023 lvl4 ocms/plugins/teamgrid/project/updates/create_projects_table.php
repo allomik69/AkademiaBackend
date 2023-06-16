@@ -24,7 +24,7 @@ class CreateProjectsTable extends Migration
 
             $table->enum('budget', ['disabled', 'totalHours','totalFees','hoursPerMonth','feesPerMonth' ])->nullable();
 
-            $table->boolean('done')->nullable()->default(false);
+            $table->boolean('done')->nullable()->default(false)->nullable();
                     
             $table->timestamps();
         });

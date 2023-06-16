@@ -8,4 +8,6 @@ Route::prefix('api/v1')->group(function () {
     Route::post('createProject' , [ProjectController::class , 'createProject']);
 
     Route::post('editProject' , [ProjectController::class , 'editProject']);
+
+    Route::post('finishProject' , [ProjectController::class , 'finishProject']);
 });

@@ -8,6 +8,7 @@ class ProjectResource extends JsonResource
     public function toArray($request)
     {
         return [
+            'ID' => $this->id,
             'Name' => $this->name,
             'Description' => $this->description,
             'Customer ID' => $this->customerID,

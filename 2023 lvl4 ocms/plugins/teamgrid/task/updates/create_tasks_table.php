@@ -26,7 +26,7 @@ class CreateTasksTable extends Migration
             $table->text('tags')->nullable();
             $table->text('description')->nullable();
 
-            $table->boolean('done')->default(false);
+            $table->boolean('done')->default(false)->nullable();
 
             $table->timestamps();
         });

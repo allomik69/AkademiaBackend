@@ -9,24 +9,24 @@ fields:
     name: 
         label: Name
         type: text
-    userID: 
+    user_id: 
         label: User ID
         type: number
-    projectID:
+    project_id:
         label: Project ID
         type: number
-    plannedStart:
+    planned_start:
         label: Planned start
         type: datepicker
         mode: date
-    plannedEnd:
+    planned_end:
         label: Planned end
         type: datepicker
         mode: date
-    dueDate:
+    due_date:
         label: Due date
         type: datepicker
-    plannedTime:
+    planned_time:
         label: Planned time
         type: datepicker
         mode: time
@@ -37,7 +37,7 @@ fields:
         label: Descrption
         type: textarea
         size: large
-    done:
+    is_done:
         label: Done
         type: switch
 

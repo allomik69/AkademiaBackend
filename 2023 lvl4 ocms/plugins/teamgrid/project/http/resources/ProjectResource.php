@@ -8,16 +8,16 @@ class ProjectResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'ID' => $this->id,
-            'Name' => $this->name,
-            'Description' => $this->description,
-            'Customer ID' => $this->customerID,
-            'Project Manager ID' => $this->projectManagerID,
-            'Due Date' => $this->dueDate,
-            'Accounting' => $this->accounting,
-            'Hourly Rate' => $this->hourlyRatePrice,
-            'Budget' => $this->budget,
-            'Done' => $this->done,            
+            'id' => $this->id,
+            'name' => $this->name,
+            'description' => $this->description,
+            'customer_id' => $this->customer_id,
+            'project_manager_id' => $this->project_manager_id,
+            'due_date' => $this->due_date,
+            'accounting' => $this->accounting,
+            'hourly_rate_price' => $this->hourly_rate_price,
+            'budget' => $this->budget,
+            'is_done' => $this->is_done,       
         ];
     }
 }

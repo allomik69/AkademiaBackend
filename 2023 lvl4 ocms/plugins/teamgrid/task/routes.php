@@ -3,11 +3,11 @@ use Teamgrid\Task\Http\Controllers\TaskController;
 
 Route::prefix('api/v1')->group(function () {
 
-    Route::get('tasks' , [TaskController::class , 'index']);
+    Route::post('task' , [TaskController::class , 'show']);
 
-    Route::post('createTask' , [TaskController::class , 'createTask']);
+    Route::post('tasks' , [TaskController::class , 'store']);
 
-    Route::post('editTask' , [TaskController::class , 'editTask']);
+    Route::post('tasks/update' , [TaskController::class , 'update']);
 
-    Route::post('finishTask' , [TaskController::class , 'finishTask']);
+    Route::post('tasks/done' , [TaskController::class , 'markAsDone']);
 });

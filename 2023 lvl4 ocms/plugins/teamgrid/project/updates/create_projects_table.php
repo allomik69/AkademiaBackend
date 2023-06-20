@@ -14,17 +14,17 @@ class CreateProjectsTable extends Migration
 
             $table->string('name');
             $table->text('description')->nullable();
-            $table->integer('customerID')->nullable();
-            $table->integer('projectManagerID')->nullable();
+            $table->integer('customer_id')->nullable();
+            $table->integer('project_manager_id')->nullable();
 
-            $table->date('dueDate')->nullable();
+            $table->dateTime('due_date')->nullable();
 
-            $table->enum('accounting', ['disabled', 'serviceHourlyRate','personHourlyRate','hourlyRate' ])->nullable();
-            $table->integer('hourlyRatePrice')->nullable();
+            $table->enum('accounting', ['disabled', 'service_hourly_rate','person_hourly_rate','hourly_rate' ])->nullable();
+            $table->integer('hourly_rate_price')->nullable();
 
-            $table->enum('budget', ['disabled', 'totalHours','totalFees','hoursPerMonth','feesPerMonth' ])->nullable();
+            $table->enum('budget', ['disabled', 'total_hours','total_fees','hours_per_month','fees_per_month' ])->nullable();
 
-            $table->boolean('done')->nullable()->default(false)->nullable();
+            $table->boolean('is_done')->nullable()->default(false)->nullable();
                     
             $table->timestamps();
         });

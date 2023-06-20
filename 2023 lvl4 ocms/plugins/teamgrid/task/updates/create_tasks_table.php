@@ -14,19 +14,19 @@ class CreateTasksTable extends Migration
 
             $table->string('name');
 
-            $table->integer('userID')->nullable();
-            $table->integer('projectID')->nullable();
+            $table->integer('user_id')->nullable();
+            $table->integer('project_id')->nullable();
 
-            $table->date('plannedStart')->nullable();
-            $table->date('plannedEnd')->nullable();
-            $table->date('dueDate')->nullable();
+            $table->date('planned_start')->nullable();
+            $table->date('planned_end')->nullable();
+            $table->date('due_date')->nullable();
 
-            $table->time('plannedTime')->nullable();
+            $table->time('planned_time')->nullable();
             
             $table->text('tags')->nullable();
             $table->text('description')->nullable();
 
-            $table->boolean('done')->default(false)->nullable();
+            $table->boolean('is_done')->default(false)->nullable();
 
             $table->timestamps();
         });

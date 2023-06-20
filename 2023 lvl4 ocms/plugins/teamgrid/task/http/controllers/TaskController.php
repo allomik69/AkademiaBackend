@@ -10,11 +10,12 @@ use Carbon\Carbon;
 
 class TaskController extends Controller
 {
-    function index() 
+    function show() 
     {
-       return TaskResource::collection(Task::all());
+      $task = Task::where('id', post("id"))->firstOrFail();
+      return new TaskResource($task); 
     }
-    function createTask()
+    function store()
     {
            $task = new Task();
            $task->name = post("name");
@@ -29,7 +30,7 @@ class TaskController extends Controller
            $task->save();     
            return new TaskResource( $task);
     }
-    function editTask()
+    function update()
  {
    if (post("projectID") == null)
    {
@@ -57,7 +58,7 @@ class TaskController extends Controller
       return "project ID was not found";
    }
 }
-function finishTask()
+function markAsDone()
 {
     if (post("projectID") == null)
     {

@@ -5,74 +5,58 @@ namespace Teamgrid\Project\Http\Controllers;
 use Teamgrid\Project\Models\Project;
 use Backend\Classes\Controller;
 use Teamgrid\Project\Http\Resources\ProjectResource;
-
+use Carbon\Carbon;
 
 class ProjectController extends Controller
 {
- function index() 
+ public function show() 
  {
-    return ProjectResource::collection(Project::all());
+      $project = Project::where('id', post("id"))->firstOrFail();
+       return new ProjectResource($project); 
  }
- function createProject()
+ public function store()
  {
         $project = new Project();
-        $project-> name = post("name");
-        $project-> description = post("description");
-        $project-> customerID = post("customerID");
-        $project-> projectManagerID = post("projectManagerID");
-        $project-> dueDate = post("dueDate");
-        $project-> accounting = post("accounting");
-        $project-> hourlyRatePrice = post("hourlyRatePrice");
-        $project-> budget = post("budget");
-        $project-> done = post("done");
+        $project->name = post("name");
+        $project->description = post("description");
+        $project->customer_id = post("customer_id");
+        $project->project_manager_id = post("project_manager_id");
+        $project->due_date = Carbon::parse(post('due_date')) ?: $project->due_date;
+        $project->accounting = post("accounting");
+        $project->hourly_rate_price = post("hourly_rate_price");
+        $project->budget = post("budget");
+        $project->is_done = post("is_done");
         $project->save();     
         return new ProjectResource( $project);
  }
- function editProject()
+ function update()
  {
-   if (post("projectManagerID") == null)
-   {
-      die ("Project manager ID has not been received");
-   }
+     try 
+     {
+      $project = Project::where('id', post("id"))->firstOrFail();
 
-      $project = Project::where('projectManagerID', post("projectManagerID"))->first();
-
-   if ($project) 
-   {
-       $project->name = post("name");
-       $project->description = post("description");
-       $project->customerID = post("customerID");
-       $project->dueDate = post("dueDate");
-       $project->accounting = post("accounting");
-       $project->hourlyRatePrice = post("hourlyRatePrice");
-       $project->budget = post("budget");
-       $project->save();
+      $project->name = post("name");
+      $project->description = post("description");
+      $project->customer_id = post("customer_id");
+      $project->project_manager_id = post("project_manager_id");
+      $project->due_date = Carbon::parse(post('due_date')) ?: $project->due_date;
+      $project->accounting = post("accounting");
+      $project->hourly_rate_price = post("hourly_rate_price");
+      $project->budget = post("budget");
+      $project->is_done = post("is_done");
+      $project->save();     
        return new ProjectResource($project);
-   } 
-   
-   else 
-   {
-      return "project manager ID was not found";
-   }
+      } 
+      catch (ModelNotFoundException $e) 
+      {
+     }
+
 }
-function finishProject()
+function markAsDone()
 {
-   if (post("projectManagerID") == null)
-   {
-      die ("Project manager ID has not been received");
-   }
-
-      $project = Project::where('projectManagerID', post("projectManagerID"))->first();
-
-   if ($project) 
-   {
-      $project->done = true;
-      $project->save();
-      return new ProjectResource($project);
-   }
-   else 
-   {
-      return "project manager ID was not found";
-   }
+   $project = Project::where('id', post("id"))->firstOrFail();
+   $project->is_done = true;
+   $project->save();     
+   return new ProjectResource($project);
 }
 }

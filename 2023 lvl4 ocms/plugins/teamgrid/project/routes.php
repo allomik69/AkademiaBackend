@@ -3,11 +3,11 @@ use Teamgrid\Project\Http\Controllers\ProjectController;
 
 Route::prefix('api/v1')->group(function () {
 
-    Route::get('projects' , [ProjectController::class , 'index']);
+    Route::post('project' , [ProjectController::class , 'show']);
 
-    Route::post('createProject' , [ProjectController::class , 'createProject']);
+    Route::post('projects' , [ProjectController::class , 'store']);
 
-    Route::post('editProject' , [ProjectController::class , 'editProject']);
+    Route::post('projects/update' , [ProjectController::class , 'update']);
 
-    Route::post('finishProject' , [ProjectController::class , 'finishProject']);
+    Route::post('projects/done' , [ProjectController::class , 'markAsDone']);
 });

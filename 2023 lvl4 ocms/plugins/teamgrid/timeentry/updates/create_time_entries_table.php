@@ -12,6 +12,7 @@ class CreateTimeEntriesTable extends Migration
             $table->engine = 'InnoDB';
             $table->increments('id');
 
+            
             $table->integer('userID')->index();
             $table->integer('taskID')->nullable();
 
@@ -20,7 +21,6 @@ class CreateTimeEntriesTable extends Migration
             
             $table->boolean('done')->default(false);
             $table->integer('totalTime')->nullable();
-            
             $table->timestamps();
         });
     }

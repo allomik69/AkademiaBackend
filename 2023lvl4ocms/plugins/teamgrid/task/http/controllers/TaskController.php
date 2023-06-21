@@ -4,6 +4,7 @@ namespace Teamgrid\Task\Http\Controllers;
 
 use Teamgrid\Task\Models\Task;
 use Backend\Classes\Controller;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Teamgrid\Task\Http\Resources\TaskResource;
 use Carbon\Carbon;
 
@@ -12,68 +13,71 @@ class TaskController extends Controller
 {
     function show() 
     {
-      $task = Task::where('id', post("id"))->firstOrFail();
+      try 
+      {
+      $task = Task::findOrFail(post("id"));
+      $task->due_date = Carbon::parse($task->due_date);
+      $task->planned_start = Carbon::parse($task->planned_start);
+      $task->planned_end = Carbon::parse($task->planned_end);
+      $task->planned_time = Carbon::parse($task->planned_time);
       return new TaskResource($task); 
+      }
+      catch (ModelNotFoundException $e) 
+      {
+         return "ID is not valid";
+      }
     }
     function store()
     {
-           $task = new Task();
-           $task->name = post("name");
-           $task->description = post("description");
-           $task->userID = post("userID");
-           $task->projectID = post("projectID");
-           $task->plannedStart = Carbon::create(post('plannedStart')) ?: $task->plannedStart;
-           $task->plannedEnd = Carbon::create(post('plannedEnd')) ?: $task->plannedEnd;
-           $task->dueDate = Carbon::create(post('dueDate')) ?: $task->dueDate;
-           $task->plannedTime = post("plannedTime");
-           $task->tags = post("tags");
-           $task->save();     
-           return new TaskResource( $task);
+         $task = new Task();
+         $task->name = post("name");
+         $task->description = post("description");
+         $task->user_id = post("user_id");
+         $task->project_id = post("project_id");
+         $task->planned_start = Carbon::create(post('planned_start')) ?: $task->planned_start;
+         $task->planned_end = Carbon::create(post('planned_end')) ?: $task->planned_end;
+         $task->due_date = Carbon::create(post('due_date')) ?: $task->due_date;
+         $task->planned_time = Carbon::create(post('planned_time')) ?: $task->planned_time;
+         $task->tags = post("tags");
+         $task->save();     
+         return new TaskResource( $task);
+      
     }
     function update()
- {
-   if (post("projectID") == null)
-   {
-      die ("Project ID has not been received");
-   }
-
-      $task = Task::where('projectID', post("projectID"))->first();
-
-   if ($task) 
-   {
-       $task->name = post("name");
-       $task->description = post("description");
-       $task->userID = post("userID");
-       $task->plannedStart = Carbon::create(post('plannedStart')) ?: $task->plannedStart;
-       $task->plannedEnd = Carbon::create(post('plannedEnd')) ?: $task->plannedEnd;
-       $task->dueDate = Carbon::create(post('dueDate')) ?: $task->dueDate;
-       $task->plannedTime = post("plannedTime");
-       $task->tags = post("tags");
-       $task->save();
-       return new TaskResource($task);
-   } 
-   
-   else 
-   {
-      return "project ID was not found";
-   }
+{
+   try {
+      $task =Task::findOrFail(post("id"));
+      $task->name = post("name");
+      $task->description = post("description");
+      $task->user_id = post("user_id");
+      $task->project_id = post("project_id");
+      $task->planned_start = Carbon::create(post('planned_start')) ?: $task->planned_start;
+      $task->planned_end = Carbon::create(post('planned_end')) ?: $task->planned_end;
+      $task->due_date = Carbon::create(post('due_date')) ?: $task->due_date;
+      $task->planned_time = Carbon::create(post('planned_time')) ?: $task->planned_time;
+      $task->tags = post("tags");
+      $task->save();     
+      return new TaskResource( $task);
+  } catch (ModelNotFoundException $e) 
+  {
+     return "ID is not valid";
+  }
 }
 function markAsDone()
 {
-    if (post("projectID") == null)
-    {
-       die ("Project ID has not been received");
-    }
-       $task = Task::where('projectID', post("projectID"))->first();
-   if ($task) 
-   {
-      $task->done = true;
-      $task->save();
+   try {
+      $task =Task::findOrFail(post("id"));
+      $task->is_done = true;
+      $task->due_date = Carbon::parse($task->due_date);
+      $task->planned_start = Carbon::parse($task->planned_start);
+      $task->planned_end = Carbon::parse($task->planned_end);
+      $task->planned_time = Carbon::parse($task->planned_time);
+      $task->save();     
       return new TaskResource($task);
    }
-   else 
+   catch (ModelNotFoundException $e) 
    {
-      return "project ID was not found";
+      return "ID is not valid";
    }
 }
 }

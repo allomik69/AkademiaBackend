@@ -1,13 +1,13 @@
 <?php
 use Teamgrid\Task\Http\Controllers\TaskController;
 
-Route::prefix('api/v1')->group(function () {
+Route::prefix('api/v1/tasks')->group(function () {
 
-    Route::post('task' , [TaskController::class , 'show']);
+    Route::post('show' , [TaskController::class , 'show']);
 
-    Route::post('tasks' , [TaskController::class , 'store']);
+    Route::post('store' , [TaskController::class , 'store']);
 
-    Route::post('tasks/update' , [TaskController::class , 'update']);
+    Route::post('update' , [TaskController::class , 'update']);
 
-    Route::post('tasks/done' , [TaskController::class , 'markAsDone']);
+    Route::post('done' , [TaskController::class , 'markAsDone']);
 });

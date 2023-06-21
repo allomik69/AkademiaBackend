@@ -13,7 +13,7 @@ class ProjectResource extends JsonResource
             'description' => $this->description,
             'customer_id' => $this->customer_id,
             'project_manager_id' => $this->project_manager_id,
-            'due_date' => $this->due_date,
+            'due_date' => $this->due_date->format('Y-m-d\TH:i'),
             'accounting' => $this->accounting,
             'hourly_rate_price' => $this->hourly_rate_price,
             'budget' => $this->budget,

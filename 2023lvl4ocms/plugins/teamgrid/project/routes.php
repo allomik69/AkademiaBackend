@@ -1,13 +1,13 @@
 <?php
 use Teamgrid\Project\Http\Controllers\ProjectController;
 
-Route::prefix('api/v1')->group(function () {
+Route::prefix('api/v1/projects')->group(function () {
 
-    Route::post('project' , [ProjectController::class , 'show']);
+    Route::post('show' , [ProjectController::class , 'show']);
 
-    Route::post('projects' , [ProjectController::class , 'store']);
+    Route::post('store' , [ProjectController::class , 'store']);
 
-    Route::post('projects/update' , [ProjectController::class , 'update']);
+    Route::post('update' , [ProjectController::class , 'update']);
 
-    Route::post('projects/done' , [ProjectController::class , 'markAsDone']);
+    Route::post('done' , [ProjectController::class , 'markAsDone']);
 });

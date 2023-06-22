@@ -6,15 +6,16 @@ use Teamgrid\Project\Models\Project;
 use Backend\Classes\Controller;
 use Teamgrid\Project\Http\Resources\ProjectResource;
 use Carbon\Carbon;
+use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class ProjectController extends Controller
 {
- public function show() 
+ public function show($key) 
  {
       try 
       {
-      $project = Project::findOrFail(post("id"));
+      $project = Project::findOrFail($key);
       $project->due_date = Carbon::parse($project->due_date);
       return new ProjectResource($project); 
       }
@@ -38,10 +39,10 @@ class ProjectController extends Controller
         $project->save();     
         return new ProjectResource( $project);
  }
- function update()
+ function update($key)
 {
     try {
-        $project = Project::findOrFail(post("id"));
+        $project = Project::findOrFail($key);
 
         $project->name = post("name");
         $project->description = post("description");
@@ -60,10 +61,10 @@ class ProjectController extends Controller
        return "ID is not valid";
     }
 }
-function markAsDone()
+function markAsDone($key)
 {
    try {
-      $project = Project::findOrFail(post("id"));
+      $project = Project::findOrFail($key);
       $project->is_done = true;
       $project->due_date = Carbon::parse($project->due_date);
       $project->save();     

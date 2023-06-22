@@ -11,11 +11,11 @@ use Carbon\Carbon;
 
 class TaskController extends Controller
 {
-    function show() 
+    function show($key) 
     {
       try 
       {
-      $task = Task::findOrFail(post("id"));
+      $task = Task::findOrFail($key);
       $task->due_date = Carbon::parse($task->due_date);
       $task->planned_start = Carbon::parse($task->planned_start);
       $task->planned_end = Carbon::parse($task->planned_end);
@@ -43,10 +43,10 @@ class TaskController extends Controller
          return new TaskResource( $task);
       
     }
-    function update()
+    function update($key)
 {
    try {
-      $task =Task::findOrFail(post("id"));
+      $task =Task::findOrFail($key);
       $task->name = post("name");
       $task->description = post("description");
       $task->user_id = post("user_id");
@@ -63,10 +63,10 @@ class TaskController extends Controller
      return "ID is not valid";
   }
 }
-function markAsDone()
+function markAsDone($key)
 {
    try {
-      $task =Task::findOrFail(post("id"));
+      $task =Task::findOrFail($key);
       $task->is_done = true;
       $task->due_date = Carbon::parse($task->due_date);
       $task->planned_start = Carbon::parse($task->planned_start);

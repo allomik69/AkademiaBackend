@@ -6,22 +6,22 @@ fields:
     id:
         label: ID
         disabled: true
-    userID:
+    user_id:
         label: User ID 
         type: number
-    taskID:
+    task_id:
         label: Task ID 
         type: number
-    startTime:
+    start_time:
         label: Start Time
         type: datepicker
-    endTime:
+    end_time:
         label: End Time
         type: datepicker
-    done:
+    is_done:
      label: Done 
      type: switch
-    totalTime:
+    total_time:
         label: Total Time
         type: number
 

@@ -11,18 +11,14 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class ProjectController extends Controller
 {
+   public function index()
+   {
+      return ProjectResource::collection(Project::all());
+   }
  public function show($key) 
  {
-      try 
-      {
       $project = Project::findOrFail($key);
-      $project->due_date = Carbon::parse($project->due_date);
       return new ProjectResource($project); 
-      }
-      catch (ModelNotFoundException $e) 
-      {
-         return "ID is not valid";
-      }
  }
  public function store()
  {
@@ -31,7 +27,7 @@ class ProjectController extends Controller
         $project->description = post("description");
         $project->customer_id = post("customer_id");
         $project->project_manager_id = post("project_manager_id");
-        $project->due_date = Carbon::parse(post('due_date')) ?: $project->due_date;
+        $project->due_date = Carbon::parse(post('due_date'));
         $project->accounting = post("accounting");
         $project->hourly_rate_price = post("hourly_rate_price");
         $project->budget = post("budget");
@@ -41,38 +37,24 @@ class ProjectController extends Controller
  }
  function update($key)
 {
-    try {
         $project = Project::findOrFail($key);
-
-        $project->name = post("name");
-        $project->description = post("description");
-        $project->customer_id = post("customer_id");
-        $project->project_manager_id = post("project_manager_id");
+        $project->name = post("name") ?: $project->name;
+        $project->description = post("description") ?: $project->description;
+        $project->customer_id = post("customer_id") ?: $project->customer_id;
+        $project->project_manager_id = post("project_manager_id") ?: $project->project_manager_id;
         $project->due_date = Carbon::parse(post('due_date')) ?: $project->due_date;
-        $project->accounting = post("accounting");
-        $project->hourly_rate_price = post("hourly_rate_price");
-        $project->budget = post("budget");
-        $project->is_done = post("is_done");
+        $project->accounting = post("accounting") ?: $project->accounting;
+        $project->hourly_rate_price = post("hourly_rate_price") ?: $project->hourly_rate_price;
+        $project->budget = post("budget") ?: $project->budget;
+        $project->is_done = post("is_done") ?: $project->is_done;
         $project->save();
-
         return new ProjectResource($project);
-    } catch (ModelNotFoundException $e) 
-    {
-       return "ID is not valid";
-    }
 }
 function markAsDone($key)
 {
-   try {
       $project = Project::findOrFail($key);
       $project->is_done = true;
-      $project->due_date = Carbon::parse($project->due_date);
       $project->save();     
       return new ProjectResource($project);
-   }
-   catch (ModelNotFoundException $e) 
-   {
-      return "ID is not valid";
-   }
 }
 }

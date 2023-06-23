@@ -2,6 +2,7 @@
 use Teamgrid\Project\Http\Controllers\ProjectController;
 
 Route::prefix('api/v1/projects')->group(function () {
+    Route::get('index' , [ProjectController::class , 'index']);
 
     Route::post('show/{key}' , [ProjectController::class , 'show']);
 

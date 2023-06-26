@@ -32,7 +32,10 @@ class TimeEntry extends Model
     /**
      * @var array Validation rules for attributes
      */
-    public $rules = [];
+    public $rules = [
+        'task' => 'required',
+        'user' => 'required'
+    ];
 
     /**
      * @var array Attributes to be cast to native types

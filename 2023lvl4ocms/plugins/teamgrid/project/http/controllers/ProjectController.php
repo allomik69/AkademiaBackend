@@ -17,6 +17,7 @@ class ProjectController extends Controller
    }
  public function show($key) 
  {
+   if (auth()->user() = true)
       $project = Project::findOrFail($key);
       return new ProjectResource($project); 
  }

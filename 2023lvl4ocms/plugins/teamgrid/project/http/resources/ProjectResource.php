@@ -3,6 +3,8 @@ namespace Teamgrid\Project\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
+use LibUser\UserApi\Http\Resources\UserResource;
+
 class ProjectResource extends JsonResource
 {
     public function toArray($request)
@@ -11,8 +13,8 @@ class ProjectResource extends JsonResource
             'id' => $this->id,
             'name' => $this->name,
             'description' => $this->description,
-            'customer_id' => $this->customer_id,
-            'project_manager_id' => $this->project_manager_id,
+            'customer_id' => new UserResource($this->user),
+            'project_manager_id' => new UserResource($this->user),
             'due_date' => $this->due_date,
             'accounting' => $this->accounting,
             'hourly_rate_price' => $this->hourly_rate_price,

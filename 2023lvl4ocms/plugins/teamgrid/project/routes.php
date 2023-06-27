@@ -6,9 +6,11 @@ Route::prefix('api/v1/projects')->group(function () {
 
     Route::post('store' , [ProjectController::class , 'store']);
 
+    Route::post('show/{key}' , [ProjectController::class , 'show']);
+
     Route::middleware(['auth'])->group (function() 
     {    
-    Route::post('show/{key}' , [ProjectController::class , 'show']);
+    
 
     Route::post('update/{key}' , [ProjectController::class , 'update']);
 

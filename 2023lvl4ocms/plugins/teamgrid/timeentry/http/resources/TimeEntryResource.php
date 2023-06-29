@@ -19,7 +19,7 @@ class TimeEntryResource extends JsonResource
         return [
             'id' => $this->id,
         'user' => new UserResource($this->user),
-        'task' => new TaskResource(Task::findOrFail($this->task_id)),
+        'task' => new TaskResource($this->task),
         'start_time' => $this->start_time,
         'end_time' => $this->end_time,
         'total_time' => $this->total_time,

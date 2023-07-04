@@ -24,7 +24,14 @@ class TimeEntryController extends Controller
  {
         $timeentry = TimeEntry::findOrFail($key);
         $timeentry->end_time = Carbon::parse(now()) ?: $timeentry->end_time;
+        $timeentry->start_time = Carbon::parse( $timeentry->start_time);
+
+        $start =$timeentry->end_time;
+        $end =$timeentry->start_time;
+        $result = $end->diff($start);
+        $timeentry->total_time = $result->format('%Y years, %m months, %d days, %H hours, %i minutes , %s seconds');
+
         $timeentry->save();
-     return new TimeEntryResource($timeentry);
+         return new TimeEntryResource($timeentry);
  }
 }

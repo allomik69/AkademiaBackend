@@ -18,7 +18,7 @@ class CreateTimeEntriesTable extends Migration
             $table->dateTime('start_time')->nullable();
             $table->dateTime('end_time')->nullable();
             
-            $table->integer('total_time')->nullable();
+            $table->string('total_time')->nullable();
             $table->boolean('is_done')->default(false);
             $table->timestamps();
         });

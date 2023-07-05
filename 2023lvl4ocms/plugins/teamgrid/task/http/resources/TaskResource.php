@@ -23,6 +23,7 @@ class TaskResource extends JsonResource
             'planned_start' => $this->planned_start,
             'planned_end' => $this->planned_end,
             'planned_time' => $this->planned_time,
+            'tracked_time' => $this->tracked_time,
             'tags' => $this->tags,
             'done' => $this->is_done,
         ];

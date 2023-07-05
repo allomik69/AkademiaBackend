@@ -16,6 +16,9 @@ class Task extends Model
     public $hasMany = [
         'timeEntries' => ['Teamgrid\TimeEntry\Mondels\TimEntry'],
     ];
+    public function trackedTime()
+    {
+    }
     /**
      * @var string The database table used by the model.
      */

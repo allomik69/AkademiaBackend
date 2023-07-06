@@ -17,7 +17,7 @@ class TimeEntryResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'id' => $this->id,
+        'id' => $this->id,
         'user' => new UserResource($this->user),
         'task' => new TaskResource($this->task),
         'start_time' => $this->start_time,

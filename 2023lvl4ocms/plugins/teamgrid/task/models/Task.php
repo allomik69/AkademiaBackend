@@ -1,6 +1,8 @@
 <?php namespace Teamgrid\Task\Models;
 
 use Model;
+use Carbon\Carbon;
+use Teamgrid\TimeEntry\Models\TimeEntry;
 
 /**
  * Task Model
@@ -18,6 +20,7 @@ class Task extends Model
     ];
     public function trackedTime()
     {
+    $tasksTimeentries = TimeEntry::where('task_id', $this->id)->get();
     }
     /**
      * @var string The database table used by the model.

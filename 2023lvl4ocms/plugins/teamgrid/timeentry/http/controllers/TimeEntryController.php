@@ -12,7 +12,6 @@ class TimeEntryController extends Controller
  public function startTimeTracking()
  {
         $user = auth()->user();
-
         $timeentry = new TimeEntry;
         $timeentry->task_id = post("task_id");
         $timeentry->user_id = $user->id;
@@ -22,9 +21,10 @@ class TimeEntryController extends Controller
  }
  public function stopTimeTracking($key)
  {
-        $timeentry = TimeEntry::findOrFail($key);
-        $timeentry->end_time = Carbon::parse(now()) ?: $timeentry->end_time;
-        $timeentry->save();
-         return new TimeEntryResource($timeentry);
+       $timeentry = TimeEntry::findOrFail($key);
+       $timeentry->end_time = Carbon::parse(now()) ?: $timeentry->end_time;
+       $timeentry->afterUpdate();
+       $timeentry->save();
+       return new TimeEntryResource($timeentry);
  }
 }

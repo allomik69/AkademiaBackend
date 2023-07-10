@@ -22,7 +22,7 @@ class TimeEntryResource extends JsonResource
         'task' => new TaskResource($this->task),
         'start_time' => $this->start_time,
         'end_time' => $this->end_time,
-        'total_time' => $this->total_time,
+        'total_time' => $this->getTotalTimeAttribute(),
         'accounting' => $this->accounting,
         'is_done' => $this->is_done,
    

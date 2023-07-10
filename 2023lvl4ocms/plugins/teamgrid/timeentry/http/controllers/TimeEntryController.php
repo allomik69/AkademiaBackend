@@ -23,7 +23,6 @@ class TimeEntryController extends Controller
  {
        $timeentry = TimeEntry::findOrFail($key);
        $timeentry->end_time = Carbon::parse(now()) ?: $timeentry->end_time;
-       $timeentry->afterUpdate();
        $timeentry->save();
        return new TimeEntryResource($timeentry);
  }

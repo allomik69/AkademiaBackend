@@ -19,7 +19,7 @@ class TaskController extends Controller
     function store()
     {
          $task = new Task();
-         $task->name = post("name");
+         $task->name = post("name") ;
          $task->description = post("description");
          $task->user_id = post("user_id");
          $task->project_id = post("project_id");

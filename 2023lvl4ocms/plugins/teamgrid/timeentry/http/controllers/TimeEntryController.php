@@ -22,7 +22,7 @@ class TimeEntryController extends Controller
  public function stopTimeTracking($key)
  {
        $timeentry = TimeEntry::findOrFail($key);
-       $timeentry->end_time = Carbon::parse(now()) ?: $timeentry->end_time;
+       $timeentry->end_time = Carbon::now()->format('Y-m-d H:i:s') ?: $timeentry->end_time;
        $timeentry->save();
        return new TimeEntryResource($timeentry);
  }

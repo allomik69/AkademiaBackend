@@ -15,3 +15,6 @@ columns:
     project_id:
         label: Project ID
         searchable: true
+    tracked_time:
+        label: Tracked Time
+        type: time

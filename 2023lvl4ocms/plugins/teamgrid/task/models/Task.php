@@ -22,6 +22,7 @@ class Task extends Model
     {
         $task_time_entries = TimeEntry::where('task_id', $this->id)->get();
 
+        $total_times = [];
         foreach ($task_time_entries as $time_entry) 
         {
             $total_times[] = $time_entry->total_time;

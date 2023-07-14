@@ -23,5 +23,4 @@ fields:
      type: switch
     total_time:
         label: Total Time
-        type:  text
-
+        type: text

@@ -8,3 +8,15 @@ columns:
         searchable: true
     total_time:
         label: Total Time
+    start_time:
+        label: Start Time
+    end_time:
+        label: End Time
+    is_done:
+        label: Done
+    name:
+        label: Project Name
+    total_time:
+        label: Total Time
+        type: time
+

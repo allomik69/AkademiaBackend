@@ -17,4 +17,3 @@ columns:
         searchable: true
     tracked_time:
         label: Tracked Time
-        type: time

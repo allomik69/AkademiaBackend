@@ -21,15 +21,12 @@ class Task extends Model
 
     public function getTrackedTimeAttribute()
     {
-        $task_time_entries = TimeEntry::where('task_id', $this->id)->get();
-        $tracked_time = CarbonInterval::create();       
-        foreach ($task_time_entries as $time_entry) 
-        {
-            $interval = CarbonInterval::createFromDateString($time_entry->total_time);
-            $tracked_time = $tracked_time->add($interval);
-        }
-        $tracked_time = $tracked_time->subYears(1);      
-        return $tracked_time;
+        $tracked_seconds = $this->timeEntries()->get()->sum(function ($entry) {
+            return $entry->total_time->totalSeconds;
+        });
+    
+        $tracked_time = CarbonInterval::seconds($tracked_seconds);
+        return $tracked_time->cascade();
     }
     
     /**

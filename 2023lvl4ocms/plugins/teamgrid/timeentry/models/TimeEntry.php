@@ -16,10 +16,10 @@ class TimeEntry extends Model
     ];
     public function getTotalTimeAttribute() 
     {
-     $start = Carbon::parse($this->end_time);
-     $end = Carbon::parse($this->start_time);
-     $result = $end->diffAsCarbonInterval($start);
-     return $result;
+        $start = Carbon::parse($this->end_time);
+        $end = Carbon::parse($this->start_time);
+        $minutes = $end->diffInMinutes($start);
+        return $minutes;
     }
 
     /**

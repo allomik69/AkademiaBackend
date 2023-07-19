@@ -21,12 +21,12 @@ class Task extends Model
 
     public function getTrackedTimeAttribute()
     {
-        $tracked_seconds = $this->timeEntries()->get()->sum(function ($entry) {
-            return $entry->total_time->totalSeconds;
-        });
-    
-        $tracked_time = CarbonInterval::seconds($tracked_seconds);
-        return $tracked_time->cascade();
+    $total_seconds = $this->timeEntries()->get()->sum(function ($entry) 
+    {
+        return $entry->total_time->totalSeconds;
+    });
+    $tracked_time = CarbonInterval::seconds($total_seconds);
+    return $tracked_time->cascade();
     }
     
     /**

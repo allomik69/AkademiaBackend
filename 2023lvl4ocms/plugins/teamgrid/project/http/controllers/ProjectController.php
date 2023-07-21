@@ -17,44 +17,68 @@ class ProjectController extends Controller
    }
  public function show($key) 
  {
-      $project = Project::findOrFail($key);
-      return new ProjectResource($project); 
+   $user = auth()->user();
+   $project = Project::findOrFail($key);
+   if ($user->id == $project->customer_id ||$user->id == $project->project_manager_id)
+ {
+   return new ProjectResource($project); 
+ } else 
+ {
+   return 'you are not a member of the project';
+ }
  }
  public function store()
  {
-        $project = new Project();
-        $project->name = post("name");
-        $project->description = post("description");
-        $project->customer_id = post("customer_id");
-        $project->project_manager_id = post("project_manager_id");
-        $project->due_date = Carbon::parse(post('due_date'));
-        $project->accounting = post("accounting");
-        $project->hourly_rate_price = post("hourly_rate_price");
-        $project->budget = post("budget");
-        $project->is_done = post("is_done");
-        $project->save();     
-        return new ProjectResource( $project);
+   $user = auth()->user();
+   $project = new Project();
+   $project->name = post("name");
+   $project->description = $user->id;
+   $project->customer_id = $user->id;
+   $project->project_manager_id = post("project_manager_id");
+   $project->due_date = Carbon::parse(post('due_date'));
+   $project->accounting = post("accounting");
+   $project->hourly_rate_price = post("hourly_rate_price");
+   $project->budget = post("budget");
+   $project->is_done = post("is_done");
+   $project->save();     
+   return new ProjectResource( $project);
  }
  function update($key)
 {
-        $project = Project::findOrFail($key);
-        $project->name = post("name") ?: $project->name;
-        $project->description = post("description") ?: $project->description;
-        $project->customer_id = post("customer_id") ?: $project->customer_id;
-        $project->project_manager_id = post("project_manager_id") ?: $project->project_manager_id;
-        $project->due_date = Carbon::parse(post('due_date')) ?: $project->due_date;
-        $project->accounting = post("accounting") ?: $project->accounting;
-        $project->hourly_rate_price = post("hourly_rate_price") ?: $project->hourly_rate_price;
-        $project->budget = post("budget") ?: $project->budget;
-        $project->is_done = post("is_done") ?: $project->is_done;
-        $project->save();
-        return new ProjectResource($project);
+   $user = auth()->user();
+   $project = Project::findOrFail($key);
+   if ($user->id == $project->customer_id ||$user->id == $project->project_manager_id)
+ {
+   $project->name = post("name") ?: $project->name;
+   $project->description = post("description") ?: $project->description;
+   //$project->customer_id = $user->id ?: $project->customer_id;
+   //$project->project_manager_id = $user->id ?: $project->project_manager_id;
+   $project->due_date = Carbon::parse(post('due_date')) ?: $project->due_date;
+   $project->accounting = post("accounting") ?: $project->accounting;
+   $project->hourly_rate_price = post("hourly_rate_price") ?: $project->hourly_rate_price;
+   $project->budget = post("budget") ?: $project->budget;
+   $project->is_done = post("is_done") ?: $project->is_done;
+   $project->save();
+   return new ProjectResource($project);
+ }
+ else 
+ {
+   return 'you are not a member of the project';
+ }
 }
 function markAsDone($key)
 {
-      $project = Project::findOrFail($key);
-      $project->is_done = true;
-      $project->save();     
-      return new ProjectResource($project);
+   $project = Project::findOrFail($key);
+   $user = auth()->user();
+   if ($user->id == $project->customer_id ||$user->id == $project->project_manager_id)
+ {
+   $project->is_done = true;
+   $project->save();     
+   return new ProjectResource($project);
+ }
+ else 
+ {
+   return 'you are not a member of the project';
+ }
 }
 }

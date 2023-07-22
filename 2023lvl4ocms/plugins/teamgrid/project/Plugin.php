@@ -2,6 +2,10 @@
 
 use Backend;
 use System\Classes\PluginBase;
+use Backend\Facades\BackendAuth;
+use October\Rain\Exception\AjaxException;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Teamgrid\Project\Models\Project;
 
 /**
  * Project Plugin Information File
@@ -40,7 +44,7 @@ class Plugin extends PluginBase
      */
     public function boot()
     {
-
+        
     }
 
     /**

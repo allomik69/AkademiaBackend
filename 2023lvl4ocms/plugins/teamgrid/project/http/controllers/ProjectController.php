@@ -17,15 +17,8 @@ class ProjectController extends Controller
    }
  public function show($key) 
  {
-   $user = auth()->user();
    $project = Project::findOrFail($key);
-   if ($user->id == $project->customer_id ||$user->id == $project->project_manager_id)
- {
    return new ProjectResource($project); 
- } else 
- {
-   return 'you are not a member of the project';
- }
  }
  public function store()
  {
@@ -75,10 +68,6 @@ function markAsDone($key)
    $project->is_done = true;
    $project->save();     
    return new ProjectResource($project);
- }
- else 
- {
-   return 'you are not a member of the project';
  }
 }
 }

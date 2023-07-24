@@ -38,10 +38,7 @@ class ProjectController extends Controller
  }
  function update($key)
 {
-   $user = auth()->user();
    $project = Project::findOrFail($key);
-   if ($user->id == $project->customer_id ||$user->id == $project->project_manager_id)
- {
    $project->name = post("name") ?: $project->name;
    $project->description = post("description") ?: $project->description;
    //$project->customer_id = $user->id ?: $project->customer_id;
@@ -53,21 +50,13 @@ class ProjectController extends Controller
    $project->is_done = post("is_done") ?: $project->is_done;
    $project->save();
    return new ProjectResource($project);
- }
- else 
- {
-   return 'you are not a member of the project';
- }
+ 
 }
 function markAsDone($key)
 {
    $project = Project::findOrFail($key);
-   $user = auth()->user();
-   if ($user->id == $project->customer_id ||$user->id == $project->project_manager_id)
- {
    $project->is_done = true;
    $project->save();     
    return new ProjectResource($project);
- }
 }
 }

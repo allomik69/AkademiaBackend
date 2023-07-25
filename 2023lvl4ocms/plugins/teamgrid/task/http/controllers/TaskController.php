@@ -18,10 +18,11 @@ class TaskController extends Controller
     }
     function store()
     {
+         $user = auth()->user();
          $task = new Task();
          $task->name = post("name") ;
          $task->description = post("description");
-         $task->user_id = post("user_id");
+         $task->user_id = $user->id;
          $task->project_id = post("project_id");
          $task->planned_start = Carbon::create(post('planned_start'));
          $task->planned_end = Carbon::create(post('planned_end'));

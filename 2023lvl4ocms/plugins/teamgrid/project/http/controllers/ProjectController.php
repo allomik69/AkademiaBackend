@@ -25,9 +25,9 @@ class ProjectController extends Controller
    $user = auth()->user();
    $project = new Project();
    $project->name = post("name");
-   $project->description = $user->id;
-   $project->customer_id = $user->id;
-   $project->project_manager_id = post("project_manager_id");
+   $project->description = post("description");
+   $project->customer_id = post("customer_id");
+   $project->project_manager_id = $user->id;;
    $project->due_date = Carbon::parse(post('due_date'));
    $project->accounting = post("accounting");
    $project->hourly_rate_price = post("hourly_rate_price");

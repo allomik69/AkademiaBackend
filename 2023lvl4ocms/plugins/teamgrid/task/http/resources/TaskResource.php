@@ -19,6 +19,7 @@ class TaskResource extends JsonResource
             'description' => $this->description,
             'user' => new UserResource($this->user),
             'project' => new ProjectResource($this->project),
+            'project_name' => $this->project_name,
             'due_date' => $this->due_date,
             'planned_start' => $this->planned_start,
             'planned_end' => $this->planned_end,

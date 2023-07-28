@@ -10,10 +10,13 @@ columns:
         label: Total Time
     start_time:
         label: Start Time
+        type: datetime
     end_time:
         label: End Time
+        type: datetime
     is_done:
-        label: Done
+        label: Done 
+        type: switch 
     name:
         label: Project Name
     total_time:

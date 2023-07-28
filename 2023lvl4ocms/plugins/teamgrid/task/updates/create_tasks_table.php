@@ -15,7 +15,9 @@ class CreateTasksTable extends Migration
             $table->string('name');
 
             $table->integer('user_id')->nullable();
+            $table->text('user_name')->nullable();
             $table->integer('project_id')->nullable();
+            $table->text('project_name')->nullable();
 
             $table->date('planned_start')->nullable();
             $table->date('planned_end')->nullable();

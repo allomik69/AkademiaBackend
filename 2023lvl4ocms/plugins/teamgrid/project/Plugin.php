@@ -2,10 +2,7 @@
 
 use Backend;
 use System\Classes\PluginBase;
-use Backend\Facades\BackendAuth;
-use October\Rain\Exception\AjaxException;
-use Illuminate\Database\Eloquent\ModelNotFoundException;
-use Teamgrid\Project\Models\Project;
+
 
 /**
  * Project Plugin Information File
@@ -90,7 +87,7 @@ class Plugin extends PluginBase
             'project' => [
                 'label'       => 'Project',
                 'url'         => Backend::url('teamgrid/project/Projects'),
-                'icon'        => 'icon-leaf',
+                'icon'        => 'icon-folder-open',
                 'permissions' => ['teamgrid.project.*'],
                 'order'       => 500,
             ],

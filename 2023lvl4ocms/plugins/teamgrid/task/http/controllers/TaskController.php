@@ -4,6 +4,7 @@ namespace Teamgrid\Task\Http\Controllers;
 
 use Teamgrid\Task\Models\Task;
 use Backend\Classes\Controller;
+use Teamgrid\Project\Models\Project;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Teamgrid\Task\Http\Resources\TaskResource;
 use Carbon\Carbon;
@@ -18,12 +19,15 @@ class TaskController extends Controller
     }
     function store()
     {
+         $project =  Project::where('id', post('project_id'))->firstOrFail();
          $user = auth()->user();
          $task = new Task();
          $task->name = post("name") ;
          $task->description = post("description");
          $task->user_id = $user->id;
-         $task->project_id = post("project_id");
+         $task->user_name = $user->name;
+         $task->project_id = $project->id;
+         $task->project_name = $project->name;
          $task->planned_start = Carbon::create(post('planned_start'));
          $task->planned_end = Carbon::create(post('planned_end'));
          $task->due_date = Carbon::create(post('due_date'));

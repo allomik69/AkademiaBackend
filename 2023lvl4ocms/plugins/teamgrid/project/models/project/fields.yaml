@@ -19,6 +19,12 @@ fields:
     project_manager_id:
         label: Project Manager ID
         type: number
+    customer_name: 
+        label: Customer Name
+        type: text
+    project_manager_name:
+        label: Project Manager Name
+        type: text
     due_date:
         label: Due Date
         type: datepicker

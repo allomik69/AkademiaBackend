@@ -14,8 +14,10 @@ class CreateProjectsTable extends Migration
 
             $table->string('name');
             $table->text('description')->nullable();
-            $table->text('customer_id')->nullable();
-            $table->string('project_manager_id')->nullable();
+            $table->integer('customer_id')->nullable();
+            $table->integer('project_manager_id')->nullable();
+            $table->text('customer_name')->nullable();
+            $table->text('project_manager_name')->nullable();
 
             $table->dateTime('due_date')->nullable();
 

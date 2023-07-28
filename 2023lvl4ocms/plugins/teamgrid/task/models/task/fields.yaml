@@ -12,6 +12,12 @@ fields:
     user_id: 
         label: User ID
         type: number
+    user_name: 
+        label: User Name
+        type: text
+    project_name: 
+        label: Project Name
+        type: text
     project_id:
         label: Project ID
         type: number

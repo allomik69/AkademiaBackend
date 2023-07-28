@@ -84,9 +84,9 @@ class Plugin extends PluginBase
 
         return [
             'timeentry' => [
-                'label'       => 'TimeEntry',
+                'label'       => 'Time Entry',
                 'url'         => Backend::url('teamgrid/timeentry/timeentries'),
-                'icon'        => 'icon-leaf',
+                'icon'        => 'icon-hourglass',
                 'permissions' => ['teamgrid.timeentry.*'],
                 'order'       => 500,
             ],

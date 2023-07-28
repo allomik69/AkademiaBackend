@@ -26,8 +26,10 @@ class ProjectController extends Controller
    $project = new Project();
    $project->name = post("name");
    $project->description = post("description");
-   $project->customer_id = $user->name;
-   $project->project_manager_id = $user->name;
+   $project->customer_id = $user->id;
+   $project->project_manager_id = $user->id;
+   $project->customer_name = $user->name;
+   $project->project_manager_name = $user->name;
    $project->due_date = Carbon::parse(post('due_date'));
    $project->accounting = post("accounting");
    $project->hourly_rate_price = post("hourly_rate_price");
@@ -38,11 +40,12 @@ class ProjectController extends Controller
  }
  function update($key)
 {
+   $user = auth()->user();
    $project = Project::findOrFail($key);
    $project->name = post("name") ?: $project->name;
    $project->description = post("description") ?: $project->description;
-   //$project->customer_id = $user->id ?: $project->customer_id;
-   //$project->project_manager_id = $user->id ?: $project->project_manager_id;
+   $project->customer_name = $user->name;
+   $project->project_manager_name = $user->name;
    $project->due_date = Carbon::parse(post('due_date')) ?: $project->due_date;
    $project->accounting = post("accounting") ?: $project->accounting;
    $project->hourly_rate_price = post("hourly_rate_price") ?: $project->hourly_rate_price;

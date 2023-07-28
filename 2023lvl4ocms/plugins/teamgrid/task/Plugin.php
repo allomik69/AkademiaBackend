@@ -84,9 +84,9 @@ class Plugin extends PluginBase
 
         return [
             'task' => [
-                'label'       => 'task',
+                'label'       => 'Task',
                 'url'         => Backend::url('teamgrid/task/tasks'),
-                'icon'        => 'icon-leaf',
+                'icon'        => 'icon-tasks',
                 'permissions' => ['teamgrid.task.*'],
                 'order'       => 500,
             ],

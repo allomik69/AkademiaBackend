@@ -12,8 +12,17 @@ columns:
     user_id: 
         label: User ID
         searchable: true
+    user_name: 
+        label: User Name
+        searchable: true
     project_id:
         label: Project ID
         searchable: true
+    project_name: 
+        label: Project Name
+        searchable: true
     tracked_time:
         label: Tracked Time
+    is_done:
+        label: Done 
+        type: switch 

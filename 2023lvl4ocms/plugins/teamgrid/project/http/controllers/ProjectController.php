@@ -30,7 +30,7 @@ class ProjectController extends Controller
    $project->project_manager_id = $user->id;
    $project->customer_name = $user->name;
    $project->project_manager_name = $user->name;
-   $project->due_date = Carbon::parse(post('due_date'));
+   $project->due_date = Carbon::create(post('due_date'));
    $project->accounting = post("accounting");
    $project->hourly_rate_price = post("hourly_rate_price");
    $project->budget = post("budget");

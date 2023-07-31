@@ -3,15 +3,16 @@
 # ===================================
 
 fields:
-    id:
-        label: ID
-        disabled: true
-    user_id:
-        label: User ID 
-        type: number
-    task_id:
-        label: Task ID 
-        type: number
+    user:
+        label: User
+        type: recordfinder
+        list: ~/plugins/rainlab/user/models/user/columns.yaml
+        prompt: Click the Find button to find a user
+    task:
+        label: Task 
+        type: recordfinder
+        list: ~/plugins/teamgrid/task/models/task/columns.yaml
+        prompt: Click the Find button to find a task
     start_time:
         label: Start Time
         type: datepicker

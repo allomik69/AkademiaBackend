@@ -6,8 +6,6 @@ columns:
     id:
         label: ID
         searchable: true
-    total_time:
-        label: Total Time
     start_time:
         label: Start Time
         type: datetime
@@ -17,8 +15,6 @@ columns:
     is_done:
         label: Done 
         type: switch 
-    name:
-        label: Project Name
     total_time:
         label: Total Time
         type: time

@@ -17,6 +17,8 @@ class TimeEntryController extends Controller
         $timeentry = new TimeEntry;
         $timeentry->task_id = $task->id;
         $timeentry->user_id = $user->id;
+        $timeentry->user_name = $user->name;
+        $timeentry->user_id = $user->id;
         $timeentry->start_time =Carbon::create(now());
         $timeentry->save();
      return new TimeEntryResource($timeentry);

@@ -1,4 +1,4 @@
-<?php namespace Teamgrid\TimeEntry\Models;
+<?php namespace Teamgrid\Timeentry\Models;
 
 use Model;
 use Carbon\Carbon;

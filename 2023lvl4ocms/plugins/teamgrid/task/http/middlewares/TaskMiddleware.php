@@ -11,9 +11,9 @@ class TaskMiddleware
     public function handle(Request $request, Closure $next): Response
     {
         $user = auth()->user();
-        $id = $user->id;
+        $name = $user->name;
         $task = Task::where('id', $request->route('key'))->firstOrFail();
-        if ( $id !== $task->user_id) 
+        if ( $name !== $task->user_name) 
         {
             return response("You are not allowed to access this task ", 403);
         }

@@ -11,9 +11,9 @@ class ProjectMiddleware
     public function handle(Request $request, Closure $next): Response
     {
         $user = auth()->user();
-        $id = $user->id;
+        $id = $user->name;
         $project = Project::where('id', $request->route('key'))->firstOrFail();
-        if ( $id !== $project->project_manager_id) 
+        if ( $id != $project->project_manager_name) 
         {
             return response("You are not a member of the project", 403);
         }

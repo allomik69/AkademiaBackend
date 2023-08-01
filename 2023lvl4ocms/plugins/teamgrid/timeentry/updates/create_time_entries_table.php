@@ -12,6 +12,7 @@ class CreateTimeEntriesTable extends Migration
             $table->engine = 'InnoDB';
             $table->increments('id');
             
+            $table->text('user_name');
             $table->integer('user_id');
             $table->integer('task_id');
 

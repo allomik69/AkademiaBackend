@@ -8,6 +8,9 @@ fields:
         type: recordfinder
         list: ~/plugins/rainlab/user/models/user/columns.yaml
         prompt: Click the Find button to find a user
+    user_name:
+        label: User Name
+        type: text
     task:
         label: Task 
         type: recordfinder

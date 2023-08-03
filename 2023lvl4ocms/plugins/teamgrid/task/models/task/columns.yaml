@@ -23,7 +23,7 @@ columns:
         searchable: true
     tracked_time:
         label: Tracked Time
-        type: time
+        type: number
     is_done:
         label: Done 
         type: switch 

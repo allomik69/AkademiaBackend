@@ -21,7 +21,7 @@ class Task extends Model
 
     public function getTrackedTimeAttribute()
     {
-        return $this->timeEntries()->sum('total_time');  
+        return $this->timeEntries()->sum('total_time'); 
     }
     
     /**

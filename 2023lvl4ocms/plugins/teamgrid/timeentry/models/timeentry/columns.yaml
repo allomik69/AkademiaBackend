@@ -19,5 +19,5 @@ columns:
         type: switch 
     total_time:
         label: Total Time
-        type: time
+        type: number
 

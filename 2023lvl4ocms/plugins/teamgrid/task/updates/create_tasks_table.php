@@ -24,8 +24,6 @@ class CreateTasksTable extends Migration
             $table->dateTime('due_date')->nullable();
             $table->time('planned_time')->nullable();
 
-            $table->string('tracked_time')->nullable();
-
             $table->text('tags')->nullable();
             $table->text('description')->nullable();
 

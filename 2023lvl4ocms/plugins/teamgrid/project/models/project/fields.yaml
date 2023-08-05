@@ -20,12 +20,6 @@ fields:
         type: recordfinder
         list: ~/plugins/rainlab/user/models/user/columns.yaml
         prompt: Click the Find button to find a user
-    customer_name: 
-        label: Customer Name
-        type: text
-    project_manager_name:
-        label: Project Manager Name
-        type: text
     due_date:
         label: Due Date
         type: datepicker

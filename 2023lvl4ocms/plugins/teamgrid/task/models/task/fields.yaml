@@ -16,12 +16,6 @@ fields:
         type: recordfinder
         list: ~/plugins/teamgrid/project/models/project/columns.yaml
         prompt: Click the Find button to find a project
-    user_name: 
-        label: User Name
-        type: text
-    project_name: 
-        label: Project Name
-        type: text
     planned_start:
         label: Planned start
         type: datepicker

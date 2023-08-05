@@ -11,12 +11,6 @@ columns:
         searchable: true
     description:
         label: Descrption
-    customer_id: 
-        label: Customer ID
-        searchable: true
-    project_manager_id:
-        label: Project Manager ID
-        searchable: true
     customer_name: 
         label: Customer Name
         searchable: true

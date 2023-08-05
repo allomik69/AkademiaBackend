@@ -9,14 +9,8 @@ columns:
     name: 
         label: Name
         searchable: true
-    user_id: 
-        label: User ID
-        searchable: true
     user_name: 
         label: User Name
-        searchable: true
-    project_id:
-        label: Project ID
         searchable: true
     project_name: 
         label: Project Name

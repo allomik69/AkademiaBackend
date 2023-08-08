@@ -31,12 +31,9 @@ fields:
         label: Planned time
         type: datepicker
         mode: time
-    tracked_time:
-        label: Tracked time 
-        type: text
     tags:
         label: Tags
-        type: text
+        type: taglist
     description:
         label: Descrption
         type: textarea

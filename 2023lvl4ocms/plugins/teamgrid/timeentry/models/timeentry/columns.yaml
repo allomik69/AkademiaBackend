@@ -6,8 +6,16 @@ columns:
     id:
         label: ID
         searchable: true
-    user_name:
+    user_name: 
         label: User Name
+        relation: user
+        select: name
+        searchable: true
+    task_name: 
+        label: Task Name
+        relation: task
+        select: name
+        searchable: true
     start_time:
         label: Start Time
         type: datetime

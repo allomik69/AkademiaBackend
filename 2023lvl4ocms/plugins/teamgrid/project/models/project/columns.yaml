@@ -13,9 +13,13 @@ columns:
         label: Descrption
     customer_name: 
         label: Customer Name
+        relation: customer
+        select: name
         searchable: true
     project_manager_name:
         label: Project Manager Name
+        relation: projectManager
+        select: name
         searchable: true
     is_done:
         label: Done 

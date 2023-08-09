@@ -22,6 +22,3 @@ fields:
     is_done:
      label: Done 
      type: switch
-    total_time:
-        label: Total Time
-        type: text

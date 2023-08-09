@@ -11,8 +11,7 @@ class CreateTimeEntriesTable extends Migration
         Schema::create('teamgrid_timeentry_time_entries', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
-            
-            $table->text('user_name');
+
             $table->integer('user_id');
             $table->integer('task_id');
 

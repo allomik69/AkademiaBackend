@@ -14,14 +14,15 @@ class TimeEntry extends Model
         "task" => ['Teamgrid\Task\Models\Task'],
         "user" => ['Rainlab\User\Models\User'],
     ];
-    public function getTotalTimeAttribute() 
-    {
-        $start = Carbon::parse($this->end_time);
-        $end = Carbon::parse($this->start_time);
-        $minutes = $end->diffInMinutes($start);
-        return $minutes;
-    }
 
+    public function beforeSave() {
+        if ($this->end_time !== null) 
+        {
+            $start = Carbon::parse($this->start_time);
+            $end = Carbon::parse($this->end_time);
+            $this->total_time = $end->diffInMinutes($start); 
+        }
+    }
     /**
      * @var string The database table used by the model.
      */

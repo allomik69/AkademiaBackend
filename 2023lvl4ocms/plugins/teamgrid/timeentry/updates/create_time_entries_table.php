@@ -15,6 +15,7 @@ class CreateTimeEntriesTable extends Migration
             $table->integer('user_id');
             $table->integer('task_id');
 
+            $table->text('user_name')->nullable();
             $table->dateTime('start_time')->nullable();
             $table->dateTime('end_time')->nullable();
             
